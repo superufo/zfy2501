@@ -1,0 +1,92 @@
+server:
+  port: 8135
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    dynamic:
+      primary: master # 设置默认的数据源或者主数据源   jdbc:dm://192.168.100.40:5236/HUADEAEXP
+      datasource:
+        master:
+          url: jdbc:mysql://localhost:3306/huadea?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+          username: root
+          password: hda@2014
+          driver-class-name: com.mysql.jdbc.Driver #com.mysql.cj.jdbc.Driver
+          type: com.alibaba.druid.pool.DruidDataSource
+          druid:
+            initial-size: 5
+            max-active: 20
+            min-idle: 5
+            max-wait: 60000
+            validation-query: SELECT 1 FROM DUAL
+            test-on-borrow: false
+            test-on-return: false
+            test-while-idle: true
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            max-evictable-idle-time-millis: 300000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            use-global-data-source-stat: true
+        slave:
+          url: jdbc:mysql://localhost:3306/huadea?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+          username: root
+          password: hda@2014
+          driver-class-name: com.mysql.jdbc.Driver #com.mysql.cj.jdbc.Driver
+          type: com.alibaba.druid.pool.DruidDataSource
+          druid:
+            initial-size: 5
+            max-active: 20
+            min-idle: 5
+            max-wait: 60000
+            validation-query: SELECT 1 FROM DUAL
+            test-on-borrow: false
+            test-on-return: false
+            test-while-idle: true
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            max-evictable-idle-time-millis: 300000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            use-global-data-source-stat: true
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.huadea.ext.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
+#MyBatis配置
+#mybatis:
+#  # 搜索指定包别名
+#  #typeAliasesPackage: com.ruoyi.**.domain
+#  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+#  mapperLocations: classpath*:mapper/**/*Mapper.xml
+#  # 加载全局的配置文件
+#  configLocation: classpath:mybatis/mybatis-config.xml
+
+# PageHelper分页插件
+#pagehelper:
+#  helperDialect: mysql
+#  supportMethodsArguments: true
+#  params: count=countSql

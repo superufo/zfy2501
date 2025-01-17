@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huadea.ext.mapper.UserMapper">
+
+	<resultMap id="BaseResultMap" type="com.huadea.ext.domain.User">
+		<id column="id" property="id" />
+		<result column="police_number" property="policeNumber" />
+		<result column="full_name" property="fullName" />
+		<result column="passwd" property="passwd" />
+		<result column="group_id" property="groupId" />
+		<result column="role_id" property="roleId" />
+		<result column="phone_code" property="phoneCode" />
+		<result column="sex" property="sex" />
+		<result column="remark" property="remark" />
+		<result column="creator_id" property="creatorId" />
+		<result column="uid" property="uid" />
+		<result column="sn" property="sn" />
+		<result column="disk" property="disk" />
+	</resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        id, police_number AS policeNumber, full_name AS fullName, passwd, group_id AS groupId, role_id AS roleId, phone_code AS phoneCode, sex, remark, creator_id AS creatorId, uid, sn, disk
+    </sql>
+
+	<!-- 虽然简单，单独放一个方法兼容以后权限扩充情况 为 com.huadea.ext.domain.Role -->
+	<select id="getUserRolesById" resultType="java.lang.Integer">
+		select role_id from  user where id=#{userId}
+	</select>
+
+</mapper>
