@@ -25,7 +25,7 @@ spring:
         master:
           url: jdbc:mysql://localhost:3306/huadea?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
           username: root
-          password: hda@2014
+          password: 123456
           driver-class-name: com.mysql.jdbc.Driver #com.mysql.cj.jdbc.Driver
           type: com.alibaba.druid.pool.DruidDataSource
           druid:
@@ -46,7 +46,7 @@ spring:
         slave:
           url: jdbc:mysql://localhost:3306/huadea?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
           username: root
-          password: hda@2014
+          password: 123456
           driver-class-name: com.mysql.jdbc.Driver #com.mysql.cj.jdbc.Driver
           type: com.alibaba.druid.pool.DruidDataSource
           druid:

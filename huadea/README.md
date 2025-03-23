@@ -1,5 +1,8 @@
 # 说明
 
+springboot +  达梦8数据库 + springSecurity6 
+ 
+
 参考：
 http://ruoyi.vip 
 
