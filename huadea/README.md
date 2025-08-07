@@ -1,6 +1,6 @@
 # 说明
 
-springboot +  达梦8数据库 + springSecurity6 
+springboot +  达梦8数据库 + springSecurity6  rbac 权限系统
  
 
 参考：
